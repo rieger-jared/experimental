@@ -1,15 +1,9 @@
 pipeline {
-  agent {
-    docker {
-      image 'openjdk:11'
-      args '-p 8000:9000'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
       steps {
-        sh 'mvn clean install'
+        sh 'mvn clean install -Dlicense.skip=true'
       }
     }
   }
